@@ -1,28 +1,44 @@
-print("-------------- Welcome to the ABC College -----------------")
 
-Name = []
-Age = []
-Phone_Number = []
-Plus2_faculty = []
+students =[]
 
-nam = input("Enter your name: ")
-ag = int(input("Enter your age: "))
-ph = int(input("Enter your phone number: "))
-faculty = input("Enter your plus 2 faculty: ")
-
-
-def add():   
-    Name.append(nam)
-    Age.append(ag)
-    Phone_Number.append(ph)
-    Plus2_faculty.append(faculty)
- 
-def display():
-    
-    for i in range(len(Name)):
-        print("-------------- Details ----------")
-        print("Name | Age | Phone Number | Faculty ")
-        print(Name[i],  "|", Age[i], "|", Phone_Number[i],"|" ,Plus2_faculty[i])
+def add_student(id,name,age,grade):
+    student = {
         
-add()
-display()
+        'id': id,
+        'name': name,
+        'age' : age,
+        'grade' : grade
+    }
+    students.append(student)
+    print('Student added successfully!!')
+    
+def view_student():
+    if not students:
+        print("Students not found !!")
+    else:
+        for student in students:
+            print(f"ID:{student['id']}\nName:{student['name']}\nAge:{student['age']}\nGrade:{student['grade']}")
+            
+def update_students():
+    pass 
+    
+
+def main():
+    while True:
+        print("-------------- Welcome to the ABC College -----------------")
+        print("Enter 1 to add student \nEnter 2 to view student")
+        choice = int(input("Enter your choice here: "))
+        if choice == 1:
+            id = int(input("Enter id: "))
+            name = input("Enter Name: ")
+            age = int(input("Enter age: "))
+            grade = input("Enter grade: ")
+            add_student(id, name, age, grade)
+        elif choice == 2:
+            print("----Here is the details of the student -----")
+            view_student()
+            
+        
+
+if __name__ == "__main__" :
+    main()
